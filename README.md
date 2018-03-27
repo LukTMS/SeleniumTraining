@@ -1,3 +1,4 @@
-# SeleniumTraining
+# JavaSelenium_Kurs
+Kurs automatyzacji testów z użyciem Java/Selenium - projekty szkoleniowe.
 
-Selenium WebDriver With Java - Novice To Ninja
+Kurs udemy.com <<Selenium WebDriver With Java - Novice To Ninja>>
