@@ -1,4 +1,4 @@
-package usefulmethods;
+package UsefulMethodsAndProperties;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -10,9 +10,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import usefulmethods.GenericMethods;
+import UsefulMethodsAndProperties.GenericMethods;
 
-public class ElementListDemo {
+public class GenericFindingElementsList {
 
 	private WebDriver driver;
 	private String baseUrl;
@@ -20,6 +20,7 @@ public class ElementListDemo {
 
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://letskodeit.teachable.com/pages/practice";
 		gm = new GenericMethods(driver);
