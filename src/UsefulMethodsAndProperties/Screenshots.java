@@ -11,7 +11,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.apache.commons.io.FileUtils;
 
 public class Screenshots {
 	private WebDriver driver;
@@ -38,34 +38,50 @@ public class Screenshots {
 		WebElement flight_destination = driver.findElement(By.id("flight-destination-hp-flight"));
 		WebElement departure_date = driver.findElement(By.id("flight-departing-hp-flight"));
 		WebElement return_date = driver.findElement(By.id("flight-returning-hp-flight"));
-		WebElement search = driver.findElement(By.partialLinkText("Search"));
+		//WebElement search = driver.findElement(By.partialLinkText("Search"));
 		
 		// Send data to elements
 		flight_origin.sendKeys("New York");
-		departure_date.sendKeys("09/03/2014");
+		flight_destination.sendKeys("Washington DC");
 		return_date.clear();
-		return_date.sendKeys("09/10/2014");
-		flight_destination.sendKeys("New York");
-		search.click();
+		return_date.sendKeys("06/09/2018");
+		departure_date.sendKeys("04/09/2018");
+		departure_date.submit();
+		//search.click();
+		
+		Thread.sleep(2000);
 	}
 	
+	//metoda do nadawania nazw plikom
 	public static String getRandomString(int length) {
-		StringBuilder sb = new StringBuilder();
+		//tworzymy String Buildera
+		StringBuilder stringBuilder = new StringBuilder();
+		//tworzymy zmienn¹ z dozwolonymi znakami
 		String characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		//dla ka¿dego i mniejszego ni¿ d³ugoœæ zmiennej z dozwolonymi znakami..
 		for (int i = 0; i < length; i++) {
+			//...stwórz zmienn¹ index i przypisz jej wynik mno¿enia funkcji Math.random x d³ugoœæ zmiennej z dozwolonymi znakami...
 			int index = (int) (Math.random() * characters.length());
-			sb.append(characters.charAt(index));
+			//...i dodaj do String Buildera znak na pozycji index ze zmiennej z dowolonymi znakami
+			stringBuilder.append(characters.charAt(index));
 		}
-		return sb.toString();
+		return stringBuilder.toString();
+	
+	
 	}
 	
 	@After
 	public void tearDown() throws Exception {
-//		String fileName = getRandomString(10) + ".png";
-//		String directory = "//Users//anil.tomar//Desktop//";
-//		
-//		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-//		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+		//tworzymy zmienn¹ z nazw¹ pliku screenshota
+		String fileName = getRandomString(10) + ".png";
+		//tworzymy zmienn¹ ze œcie¿k¹ zapisu pliku screenshota
+		String directory = "\\Users\\LukTMS\\Pulpit\\";
+		
+		//tworzymy zmienn¹ typu FILE
+		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		//kopiujemy plik do wskazanej lokalizacji
+		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+		
 		driver.quit();
 	}
 }
