@@ -1,6 +1,6 @@
-package tutorialselenium;
+package UsefulMethodsAndProperties;
 
-import java.util.List;
+
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -17,6 +17,7 @@ public class CalendarSelection {
 
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "http://www.expedia.com/";
 
@@ -29,14 +30,14 @@ public class CalendarSelection {
 	public void test1() throws Exception {
 		driver.get(baseUrl);
 		// Click flights tab
-		driver.findElement(By.id("tab-flight-tab")).click();
+		driver.findElement(By.id("tab-flight-tab-hp")).click();
 		// Find departing field
-		WebElement departingField = driver.findElement(By.id("flight-departing"));
+		WebElement departingField = driver.findElement(By.id("flight-departing-hp-flight"));
 		// Click departing field
 		departingField.click();
 		Thread.sleep(3000);
-		// Find the date to be selected
-		WebElement dateToSelect = driver.findElement(By.xpath("//section[@class='cal-month'][position()=1]//a[text()='31']"));
+		// Find the date to be selected (TABLE style)
+		WebElement dateToSelect = driver.findElement(By.xpath("//button[contains(@class, 'datepicker-cal-date') and contains(text(), '30')]"));
 		// Click the date
 		dateToSelect.click();
 	}

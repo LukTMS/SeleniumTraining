@@ -1,8 +1,7 @@
-package tutorial.selenium;
+package UsefulMethodsAndProperties;
 
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,31 +12,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
 public class Screenshots {
 	private WebDriver driver;
 	private String baseUrl;
 
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://www.expedia.com/";
 		
 		// Maximize the browser's window
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 
 	@Test
 	public void testScreenshots() throws Exception {
 		driver.get(baseUrl);
-		driver.findElement(By.id("tab-flight-tab")).click();
+		driver.findElement(By.id("tab-flight-tab-hp")).click();
 		
 		// Find Elements
-		WebElement flight_origin = driver.findElement(By.id("flight-origin"));
-		WebElement flight_destination = driver.findElement(By.id("flight-destination"));
-		WebElement departure_date = driver.findElement(By.id("flight-departing"));
-		WebElement return_date = driver.findElement(By.id("flight-returning"));
-		WebElement search = driver.findElement(By.id("search-button"));
+		WebElement flight_origin = driver.findElement(By.id("flight-origin-hp-flight"));
+		WebElement flight_destination = driver.findElement(By.id("flight-destination-hp-flight"));
+		WebElement departure_date = driver.findElement(By.id("flight-departing-hp-flight"));
+		WebElement return_date = driver.findElement(By.id("flight-returning-hp-flight"));
+		WebElement search = driver.findElement(By.partialLinkText("Search"));
 		
 		// Send data to elements
 		flight_origin.sendKeys("New York");
@@ -60,11 +61,11 @@ public class Screenshots {
 	
 	@After
 	public void tearDown() throws Exception {
-		String fileName = getRandomString(10) + ".png";
-		String directory = "//Users//anil.tomar//Desktop//";
-		
-		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(sourceFile, new File(directory + fileName));
+//		String fileName = getRandomString(10) + ".png";
+//		String directory = "//Users//anil.tomar//Desktop//";
+//		
+//		File sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+//		FileUtils.copyFile(sourceFile, new File(directory + fileName));
 		driver.quit();
 	}
 }
