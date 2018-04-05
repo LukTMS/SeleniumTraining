@@ -5,6 +5,7 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -35,23 +36,24 @@ public class JavaScriptClick {
 		js.executeScript("arguments[0].click();", checkBoxElement);
 	}
 	
-//	@Test
-//	public void testJSClick2() throws Exception {
-//		driver.get("https://www.retailmenot.com/");
-//		driver.findElement(By.xpath("//div[text()='Log In / Sign up']")).click();
-//		Thread.sleep(3000);
-//		
-//		WebElement checkBoxElement = driver.findElement(By.id("subscribe"));
-//		System.out.println("Displayed: " + checkBoxElement.isDisplayed());
-//		System.out.println("Selected: " + checkBoxElement.isSelected());
-//		
-//		//checkBoxElement.click();
-//		js.executeScript("arguments[0].click();", checkBoxElement);
-//	}
+	@Test
+	public void testJSClick2() throws Exception {
+		driver.get("https://www.retailmenot.com/");
+		driver.findElement(By.xpath("//div[text()='Log In / Sign up']")).click();
+		Thread.sleep(3000);
+		
+		WebElement checkBoxElement = driver.findElement(By.id("subscribe"));
+		System.out.println("Displayed: " + checkBoxElement.isDisplayed());
+		System.out.println("Selected: " + checkBoxElement.isSelected());
+		
+		//checkBoxElement.click();
+		js.executeScript("arguments[0].click();", checkBoxElement);
+	}
 	
-	
+
 	
 	@After
 	public void tearDown() throws Exception {
+		driver.quit();
 	}
 }
