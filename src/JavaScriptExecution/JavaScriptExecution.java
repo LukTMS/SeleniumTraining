@@ -1,11 +1,10 @@
-package javascriptexecution;
+package JavaScriptExecution;
 
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,16 +13,24 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class JavaScriptExecution {
 	private WebDriver driver;
 	String baseUrl;
+	
+	//utworzenie zmiennej 
 	private JavascriptExecutor js;
 
+	
+	
+	
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		
+	//utworzenie drivera JavaScript
 		js = (JavascriptExecutor) driver;
 		
 		// Maximize the browser's window
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
@@ -39,11 +46,18 @@ public class JavaScriptExecution {
 		Thread.sleep(3000);
 		// Finding element
 		// WebElement textBox = driver.findElement(By.id("name"));
+		
 		WebElement textBox = (WebElement) js.executeScript("return document.getElementById('name');");
 		textBox.sendKeys("test");
+		
+		WebElement alertButton = (WebElement) js.executeScript("return document.getElementById('alertbtn');");
+		alertButton.click();
+		
+		
 	}
 	
 	@After
 	public void tearDown() throws Exception {
+		driver.quit();
 	}
 }

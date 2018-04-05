@@ -1,6 +1,8 @@
 package UsefulMethodsAndProperties;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
@@ -65,11 +67,12 @@ public class Screenshots {
 			//...i dodaj do String Buildera znak na pozycji index ze zmiennej z dowolonymi znakami
 			stringBuilder.append(characters.charAt(index));
 		}
+		
 		return stringBuilder.toString();
-	
-	
 	}
-	
+		
+		
+		
 	@After
 	public void tearDown() throws Exception {
 		//tworzymy zmienn¹ z nazw¹ pliku screenshota
