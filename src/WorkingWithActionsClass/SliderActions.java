@@ -1,4 +1,4 @@
-package actionsclass;
+package WorkingWithActionsClass;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,6 +17,7 @@ public class SliderActions {
 
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://jqueryui.com/slider/";
 

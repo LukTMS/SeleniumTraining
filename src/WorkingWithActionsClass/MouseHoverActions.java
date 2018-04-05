@@ -1,4 +1,4 @@
-package actionsclass;
+package WorkingWithActionsClass;
 
 import java.util.concurrent.TimeUnit;
 
@@ -19,6 +19,7 @@ public class MouseHoverActions {
 
 	@Before
 	public void setUp() throws Exception {
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://letskodeit.teachable.com/pages/practice";
 		jse = (JavascriptExecutor)driver;
@@ -34,14 +35,19 @@ public class MouseHoverActions {
 		jse.executeScript("window.scrollBy(0, 600)");
 		Thread.sleep(2000);
 		
-		WebElement mainElement = driver.findElement(By.id("mousehover"));
 		
+		//wa¿ne
 		Actions action = new Actions(driver);
+		
+		
+		
+		WebElement mainElement = driver.findElement(By.id("mousehover"));
 		action.moveToElement(mainElement).perform();
 		Thread.sleep(2000);
 		
 		WebElement subElement = driver.findElement(By.xpath("//div[@class='mouse-hover-content']//a[text()='Top']"));
 		action.moveToElement(subElement).click().perform();
+			
 	}
 
 	@After
