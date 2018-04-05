@@ -1,5 +1,6 @@
 package SwitchingWindowsAndIFrames;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -10,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SwitchFrame_2 {
+public class SwitchWindow {
 	private WebDriver driver;
 	private String baseUrl;
 
@@ -18,7 +19,7 @@ public class SwitchFrame_2 {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
-		baseUrl = "https://letskodeit.teachable.com/pages/practice";
+		baseUrl = "http://letskodeit.teachable.com/pages/practice";
 
 		// Maximize the browser's window
 		driver.manage().window().maximize();
@@ -28,25 +29,42 @@ public class SwitchFrame_2 {
 
 	@Test
 	public void test() throws InterruptedException {
-		Thread.sleep(3000);
-		// Switch to frame by Id
-		driver.switchTo().frame("courses-iframe");
-		// Switch to frame by name
-		//driver.switchTo().frame("iframe-name");
-		// Switch to frame by numbers
-		//driver.switchTo().frame(0);
+		// Get the handle
+		String parentHandle = driver.getWindowHandle();
+		System.out.println("Parent Handle: " + parentHandle + "\n");
 		
-		WebElement searchBox = driver.findElement(By.id("search-courses"));
-		searchBox.sendKeys("python");
+		// Find Open Window button
+		WebElement openWindow = driver.findElement(By.id("openwindow"));
+		openWindow.click();
+
+		// Get all handles
+		Set<String> handles = driver.getWindowHandles();
+
+		// Switching between handles
+		for (String handle: handles) {
+			System.out.println(handle);
+			if (!handle.equals(parentHandle)) {
+				driver.switchTo().window(handle);
+				Thread.sleep(2000);
+				
+				WebElement searchBox = driver.findElement(By.id("search-courses"));
+				searchBox.sendKeys("python");
+				Thread.sleep(2000);
+				
+				driver.close();
+				
+				break;
+			}
+		}
 		
-		driver.switchTo().defaultContent();
-		Thread.sleep(6000);
+		// Switch back to the parent window
+		driver.switchTo().window(parentHandle);
 		driver.findElement(By.id("name")).sendKeys("Test Successful");
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		Thread.sleep(10000);
+		Thread.sleep(2000);
 		driver.quit();
 	}
 }

@@ -1,6 +1,5 @@
 package SwitchingWindowsAndIFrames;
 
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -11,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class SwitchWindow_1 {
+public class SwitchFrame {
 	private WebDriver driver;
 	private String baseUrl;
 
@@ -19,7 +18,7 @@ public class SwitchWindow_1 {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
-		baseUrl = "http://letskodeit.teachable.com/pages/practice";
+		baseUrl = "https://letskodeit.teachable.com/pages/practice";
 
 		// Maximize the browser's window
 		driver.manage().window().maximize();
@@ -29,30 +28,25 @@ public class SwitchWindow_1 {
 
 	@Test
 	public void test() throws InterruptedException {
-
-//		
-//		WebElement searchBox = driver.findElement(By.id("search-courses"));
-//		searchBox.sendKeys("python");
-		// Get the handle
-		String parentHandle = driver.getWindowHandle();
-		System.out.println("Parent Handle: " + parentHandle);
+		Thread.sleep(3000);
+		// Switch to frame by Id
+		driver.switchTo().frame("courses-iframe");
+		// Switch to frame by name
+		//driver.switchTo().frame("iframe-name");
+		// Switch to frame by numbers ['0' oznacza, ¿e to pierwszy iFrame na stronie] 
+		//driver.switchTo().frame(0);
 		
-		// Find Open Window button
-		WebElement openWindow = driver.findElement(By.id("openwindow"));
-		openWindow.click();
-
-		// Get all handles
-		Set<String> handles = driver.getWindowHandles();
-
-		// Switching between handles
-		for (String handle: handles) {
-			System.out.println(handle);
-		}
-
-		// Switch back to the parent window
+		WebElement searchBox = driver.findElement(By.id("search-courses"));
+		searchBox.sendKeys("python");
+		
+		driver.switchTo().defaultContent();
+		Thread.sleep(6000);
+		driver.findElement(By.id("name")).sendKeys("Test Successful");
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		Thread.sleep(10000);
+		driver.quit();
 	}
 }
