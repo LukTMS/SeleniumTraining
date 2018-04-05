@@ -1,8 +1,6 @@
 package UsefulMethodsAndProperties;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
