@@ -30,6 +30,8 @@ public class DragAndDropActions {
 	public void testDragAndDrop() throws Exception {
 		driver.get(baseUrl);
 		Thread.sleep(2000);
+		
+		//trzeba przejœæ do IFrame
 		driver.switchTo().frame(0);
 
 		WebElement fromElement = driver.findElement(By.id("draggable"));
@@ -37,15 +39,17 @@ public class DragAndDropActions {
 		
 		Actions action = new Actions(driver);
 		
-		// Drag and drop
-		//action.dragAndDrop(fromElement, toElement).build().perform();
+		// Drag and drop, build and perform
+		action.dragAndDrop(fromElement, toElement).build().perform();
 		
 		// Click and hold, move to element, release, build and perform
-		action.clickAndHold(fromElement).moveToElement(toElement).release().build().perform();
+		//action.clickAndHold(fromElement).moveToElement(toElement).release().build().perform();
+		
+		Thread.sleep(2000);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		// driver.quit();
+		driver.quit();
 	}
 }
