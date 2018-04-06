@@ -1,4 +1,4 @@
-package keypress;
+package PressingKeysEvents;
 
 import java.util.concurrent.TimeUnit;
 import org.junit.After;
@@ -15,8 +15,7 @@ public class KeyPressDemo1 {
 
 	@Before
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", 
-				"/Users/atomar/Documents/workspace_personal/libs/geckodriver");
+		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
 		driver = new FirefoxDriver();
 		baseUrl = "https://letskodeit.teachable.com/p/practice";
 
@@ -32,8 +31,12 @@ public class KeyPressDemo1 {
 		driver.findElement(By.id("user_email")).sendKeys("test@email.com");
 		Thread.sleep(2000);
 		driver.findElement(By.id("user_email")).sendKeys(Keys.TAB);
+		
 		//driver.findElement(By.id("user_password")).sendKeys("123123");
-		//Thread.sleep(2000);
+		driver.findElement(By.id("user_password")).sendKeys(Keys.ENTER);
+		Thread.sleep(2000);
+		
+		//klikanie ENTER po wprowadzeniu tekstu
 		//driver.findElement(By.name("commit")).sendKeys(Keys.ENTER);
 	}
 
