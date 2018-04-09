@@ -44,6 +44,7 @@ public class KeyPressDemo2 {
 		//metoda 4
 		Actions action = new Actions(driver);
 		action.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).perform();
+		
 		Thread.sleep(2000);
 	}
 
