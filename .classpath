@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="src" path="Basics"/>
+	<classpathentry kind="src" path="SeleniumBasics"/>
 	<classpathentry kind="src" path="Resources"/>
 	<classpathentry kind="src" path="TestNGTraining"/>
-	<classpathentry kind="src" path="Advanced"/>
+	<classpathentry kind="src" path="SeleniumAdvanced"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="lib" path="D:/- Programy -/- Instalki/selenium-java-3.11.0/libs/byte-buddy-1.7.9.jar"/>
 	<classpathentry kind="lib" path="D:/- Programy -/- Instalki/selenium-java-3.11.0/libs/commons-codec-1.10.jar"/>

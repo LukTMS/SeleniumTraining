@@ -1,16 +1,17 @@
-package testclasses;
+package TestNG;
 
 import org.testng.annotations.Test;
 
-public class TestNG_Preserve1 {
-	
+public class TestsPreserve1 {
+ 
 	@Test
 	public void testMethod1() {
-		System.out.println("TestNG_Preserve1 -> testMethod1");
+		System.out.println("TestsPreserve [1] -> testMethod [1]");
 	}
-	
+
 	@Test
 	public void testMethod2() {
-		System.out.println("TestNG_Preserve1 -> testMethod2");
+		System.out.println("TestsPreserve [1] -> testMethod [2]");
 	}
+
 }

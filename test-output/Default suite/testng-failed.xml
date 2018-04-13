@@ -3,13 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestNG.TimeoutTestMethods">
+      <class name="AdvancedReporting.ReportsAndLogs">
         <methods>
           <include name="testMethod2"/>
+          <include name="beforeMethod"/>
           <include name="cleanUp"/>
+          <include name="afterMethod"/>
           <include name="setUp"/>
+          <include name="testMethod3"/>
         </methods>
-      </class> <!-- TestNG.TimeoutTestMethods -->
+      </class> <!-- AdvancedReporting.ReportsAndLogs -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

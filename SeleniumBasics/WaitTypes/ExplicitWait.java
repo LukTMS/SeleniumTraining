@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,12 +19,15 @@ class ExplicitWait {
 	
 	@BeforeAll
 	static void beforeSetUp() throws Exception {
-		System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
+		//System.setProperty("webdriver.gecko.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\geckodriver.exe");
+		System.setProperty("webdriver.chrome.driver", "D:\\- Programy -\\- Instalki\\geckodriver-v0.20.0-win64\\chromedriver.exe");
+		
 	}
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
+		driver = new ChromeDriver();
 		baseURL = "https://letskodeit.teachable.com/p/practice";
 		//driver.manage().window().maximize();
 		
